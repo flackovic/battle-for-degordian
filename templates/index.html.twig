@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Battle for Degordian! {% endblock %}
+
+{% block body %}
+
+    {% if error is defined %}
+
+        {{ error }}
+
+    {% endif %}
+
+    {% if winner is defined %}
+
+        Winner is {{ winner }} with {{ unitCount }} units left!
+        Total turns: {{ turns }}
+
+    {% endif %}
+
+{% endblock %}
