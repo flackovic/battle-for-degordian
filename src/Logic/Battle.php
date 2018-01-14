@@ -1,39 +1,38 @@
 <?php
 namespace App\Logic;
 
-use App\Logic\Combat;
 use App\Entity\Army;
 
 class Battle
 {
 
-	protected $turn;
+    protected $turn;
     protected $winner;
 
     protected $armies;
     protected $attacker;
     protected $defender;
 
-	public function __construct(Army $army1, Army $army2)
-	{
-		$this->turn = 0;
+    public function __construct(Army $army1, Army $army2)
+    {
+        $this->turn = 0;
         $this->armies[$army1->name] = $army1;
         $this->armies[$army2->name] = $army2;
-	}
+    }
 
-	public function start()
-	{
-		while($this->armies['Army1']->isAlive() && $this->armies['Army2']->isAlive())
+    public function start()
+    {
+        while($this->armies['Army1']->isAlive() && $this->armies['Army2']->isAlive())
         {
             $this->doTurn();
         }
 
         return ['winner' => $this->getWinner(), 'totalTurns' => $this->turn];
 
-	}
+    }
 
     protected function doTurn()
-	{
+    {
         // Draw random attacker and defender from opposite armies
         $this->chooseAttackerAndDefender();
 
@@ -47,7 +46,7 @@ class Battle
         $this->checkForCasualties();
 
         $this->turn++;
-	}
+    }
 
     /**
      * Extract keys from array of armies in tmp array and shuffle
