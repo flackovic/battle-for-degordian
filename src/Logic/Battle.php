@@ -1,11 +1,11 @@
 <?php
+
 namespace App\Logic;
 
 use App\Entity\Army;
 
 class Battle
 {
-
     protected $turn;
     protected $winner;
 
@@ -22,13 +22,11 @@ class Battle
 
     public function start()
     {
-        while($this->armies['Army1']->isAlive() && $this->armies['Army2']->isAlive())
-        {
+        while ($this->armies['Army1']->isAlive() && $this->armies['Army2']->isAlive()) {
             $this->doTurn();
         }
 
         return ['winner' => $this->getWinner(), 'totalTurns' => $this->turn];
-
     }
 
     protected function doTurn()
@@ -45,7 +43,7 @@ class Battle
         // Remove corpses if someone died :)
         $this->checkForCasualties();
 
-        $this->turn++;
+        ++$this->turn;
     }
 
     /**
@@ -66,13 +64,12 @@ class Battle
 
     protected function includeRandomPerformanceFactors()
     {
-        /**
+        /*
          * If attacker is half the size of defender - he gets frightened and consequently his chance
          * to miss increases permanently
          */
-        if($this->attacker->getHealth() < ($this->defender->getHealth() / 2))
-        {
-            $this->attacker->missPercent++;
+        if ($this->attacker->getHealth() < ($this->defender->getHealth() / 2)) {
+            ++$this->attacker->missPercent;
         }
     }
 
@@ -82,15 +79,15 @@ class Battle
     }
 
     /**
-     * Unset units with health <= 0, as they are considered dead
+     * Unset units with health <= 0, as they are considered dead.
      */
     protected function checkForCasualties()
     {
-        if($this->attacker->getHealth() <= 0) {
+        if ($this->attacker->getHealth() <= 0) {
             $this->armies[$this->attacker->armyName]->removeUnit($this->attacker);
         }
 
-        if($this->defender->getHealth() <= 0) {
+        if ($this->defender->getHealth() <= 0) {
             $this->armies[$this->defender->armyName]->removeUnit($this->defender);
         }
     }
@@ -100,10 +97,8 @@ class Battle
      */
     protected function getWinner()
     {
-        foreach($this->armies as $army)
-        {
-            if($army->isAlive())
-            {
+        foreach ($this->armies as $army) {
+            if ($army->isAlive()) {
                 return $army;
             }
         }

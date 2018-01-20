@@ -1,4 +1,34 @@
 {
+    "composer/semver": {
+        "version": "1.4.2"
+    },
+    "doctrine/annotations": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "cb4152ebcadbe620ea2261da1a1c5a9b8cea7672"
+        }
+    },
+    "doctrine/lexer": {
+        "version": "v1.0.1"
+    },
+    "friendsofphp/php-cs-fixer": {
+        "version": "2.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.2",
+            "ref": "bb31a3bbec00a8fc8aa1c9fbf9b0ef9fc492f93d"
+        }
+    },
+    "gecko-packages/gecko-php-unit": {
+        "version": "v3.0"
+    },
+    "php-cs-fixer/diff": {
+        "version": "v1.2.0"
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
@@ -71,6 +101,18 @@
     "symfony/lts": {
         "version": "4-dev"
     },
+    "symfony/options-resolver": {
+        "version": "v4.0.3"
+    },
+    "symfony/phpunit-bridge": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "179470cb6492db92dffee208cfdb436f175c93b4"
+        }
+    },
     "symfony/polyfill-mbstring": {
         "version": "v1.6.0"
     },
@@ -88,6 +130,9 @@
             "version": "4.0",
             "ref": "cda8b550123383d25827705d05a42acf6819fe4e"
         }
+    },
+    "symfony/stopwatch": {
+        "version": "v4.0.3"
     },
     "symfony/twig-bridge": {
         "version": "v4.0.3"

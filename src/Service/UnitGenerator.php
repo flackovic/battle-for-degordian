@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Service;
 
 use App\Entity\Unit;
@@ -20,39 +21,37 @@ class UnitGenerator
                 'healthModifier' => 1.8,
                 'damageModifier' => 0.2,
                 'armourModifier' => 1.2,
-                'missModifier' => 1.0
+                'missModifier' => 1.0,
             ],
             'DamageWarrior' => [
                 'healthModifier' => 0.8,
                 'damageModifier' => 1.7,
                 'armourModifier' => 1.0,
-                'missModifier' => 1.0
+                'missModifier' => 1.0,
             ],
             'Mage' => [
                 'healthModifier' => 0.2,
                 'damageModifier' => 2.0,
                 'armourModifier' => 0.0,
-                'missModifier' => 1.0
+                'missModifier' => 1.0,
             ],
             'Archer' => [
                 'healthModifier' => 1.0,
                 'damageModifier' => 5.0,
                 'armourModifier' => 1.0,
-                'missModifier' => 10.0
-            ]
+                'missModifier' => 10.0,
+            ],
         ];
     }
 
     /**
-     * Returns array of random units
+     * Returns array of random units.
      */
     public function generateRandomUnits($armyName, $numberOfUnits)
     {
+        $units = [];
 
-        $units = array();
-
-        for($i = 0; $i < $numberOfUnits; $i++)
-        {
+        for ($i = 0; $i < $numberOfUnits; ++$i) {
             $className = $this->getRandomClass();
             $stats = $this->generateStatsFromClass($className);
             $units[] = new Unit($armyName, $className, $stats);
@@ -62,7 +61,7 @@ class UnitGenerator
     }
 
     /**
-     * Gets random class and apply its modifiers to base stats
+     * Gets random class and apply its modifiers to base stats.
      */
     protected function generateStatsFromClass($className)
     {
@@ -72,7 +71,7 @@ class UnitGenerator
             'health' => self::BASE_HEALTH * $modifiers['healthModifier'],
             'damage' => self::BASE_DAMAGE * $modifiers['damageModifier'],
             'armour' => self::BASE_ARMOUR * $modifiers['armourModifier'],
-            'missPercent' => self::BASE_MISS * $modifiers['missModifier']
+            'missPercent' => self::BASE_MISS * $modifiers['missModifier'],
         ];
     }
 
@@ -80,5 +79,4 @@ class UnitGenerator
     {
         return array_rand($this->classes);
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity;
 
 class Army
@@ -6,7 +7,7 @@ class Army
     public $name;
     public $units;
 
-    public function __construct(String $name, Array $units)
+    public function __construct(String $name, array $units)
     {
         $this->name = $name;
         $this->units = $units;
@@ -42,5 +43,4 @@ class Army
         $unitId = array_search($unit, $this->units);
         unset($this->units[$unitId]);
     }
-
 }
