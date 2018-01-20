@@ -1,4 +1,5 @@
 <?php
+
 namespace tests;
 
 use App\Entity\Unit;
@@ -6,7 +7,6 @@ use PHPUnit\Framework\TestCase;
 
 class UnitTest extends TestCase
 {
-
     protected $armyName;
     protected $class;
     protected $stats;
@@ -19,7 +19,7 @@ class UnitTest extends TestCase
             'health' => 100,
             'damage' => 100,
             'armour' => 100,
-            'missPercent' => 100
+            'missPercent' => 100,
         ];
     }
 
@@ -49,5 +49,4 @@ class UnitTest extends TestCase
 
         self::assertFalse($missed);
     }
-
 }
