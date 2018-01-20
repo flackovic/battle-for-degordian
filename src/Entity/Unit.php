@@ -1,9 +1,9 @@
 <?php
+
 namespace App\Entity;
 
 class Unit
 {
-
     public $armyName;
     public $class;
     public $health;

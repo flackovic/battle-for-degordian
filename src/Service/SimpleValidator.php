@@ -1,19 +1,17 @@
 <?php
+
 namespace App\Service;
 
 class SimpleValidator
 {
-
-    public function validate(Array $params)
+    public function validate(array $params)
     {
-        foreach($params as $param)
-        {
-            if(!$param || !is_numeric($param))
-            {
+        foreach ($params as $param) {
+            if (!$param || !is_numeric($param)) {
                 return false;
             }
         }
+
         return true;
     }
-
 }
