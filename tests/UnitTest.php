@@ -22,7 +22,7 @@ class UnitTest extends TestCase
             'missPercent' => 100,
         ];
 
-        //$this->unit = new Unit($this->armyName, $this->class, $this->stats);
+        $this->unit = new Unit($this->armyName, $this->class, $this->stats);
     }
 
     public function testUnitCanBeConstructed()
