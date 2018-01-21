@@ -21,31 +21,35 @@ class UnitTest extends TestCase
             'armour' => 100,
             'missPercent' => 100,
         ];
+
+        $this->unit = new Unit($this->armyName, $this->class, $this->stats);
     }
 
     public function testUnitCanBeConstructed()
     {
-        $unit = new Unit($this->armyName, $this->class, $this->stats);
+        self::assertInstanceOf(Unit::class, $this->unit);
+    }
 
-        self::assertInstanceOf(Unit::class, $unit);
+    public function testAttributesAreSetOnConstruct()
+    {
+        self::assertSame($this->unit->getHealth(), $this->stats['health']);
+        self::assertSame($this->unit->getDamage(), $this->stats['damage']);
+        self::assertSame($this->unit->getArmour(), $this->stats['armour']);
+        self::assertSame($this->unit->missPercent, $this->stats['missPercent']);
     }
 
     public function testItWillMissIfMissChanceIs100Percent()
     {
-        $unit = new Unit($this->armyName, $this->class, $this->stats);
-
-        $missed = $unit->miss();
+        $missed = $this->unit->miss();
 
         self::assertTrue($missed);
     }
 
     public function testItWillNotMissIfMissChanceIs0Percent()
     {
-        $unit = new Unit($this->armyName, $this->class, $this->stats);
+        $this->unit->missPercent = 0;
 
-        $unit->missPercent = 0;
-
-        $missed = $unit->miss();
+        $missed = $this->unit->miss();
 
         self::assertFalse($missed);
     }
